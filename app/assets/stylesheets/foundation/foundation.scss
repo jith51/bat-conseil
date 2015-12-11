@@ -32,25 +32,22 @@
 
 
 .dt-btn-edit {
-  @include button();
+  @include button($background: $primary-color);
   font-size: map-get($button-sizes, tiny);
-  background: $primary-color;
   margin: 0px;
   margin-right: 5px;
 }
 
 .dt-btn-show {
-  @include button();
+  @include button($background: $medium-gray, $background-hover:auto);
   font-size: map-get($button-sizes, tiny);
-  background: $medium-gray;
   margin: 0px;
   margin-right: 5px;
 }
 
 .dt-btn-delete {
-  @include button();
+  @include button($background: $warning-color, $background-hover:auto);
   font-size: map-get($button-sizes, tiny);
-  background: $warning-color;
   margin: 0px;
   margin-right: 5px;
 }

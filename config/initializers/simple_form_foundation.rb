@@ -40,8 +40,8 @@ SimpleForm.setup do |config|
     b.optional :readonly
   
     b.wrapper tag: 'div', class: 'group-form prefix-radius' do |c|
-      c.use :label_text, wrap_with: { tag: 'span', class: 'small-12 medium-12 large-3 column' }
-      c.use :input, wrap_with: { tag: 'div', class: 'samll-12 medium-12 large-9 column' }
+      c.use :label, wrap_with: { tag: 'span', class: 'small-12 medium-12 large-3 column' }
+      c.use :input, wrap_with: { tag: 'div', class: 'small-12 medium-12 large-9 column' }
       c.use :error, wrap_with: { tag: 'span', class: 'form-error is-visible' }
     end
 
@@ -54,5 +54,5 @@ SimpleForm.setup do |config|
   config.error_notification_class = 'alert-box alert'
 
   # The default wrapper to be used by the FormBuilder.
-  config.default_wrapper = :foundation
+  config.default_wrapper = :min_inline_foundation
 end

@@ -1,13 +1,13 @@
 = simple_form_for resource, wrapper: :min_inline_foundation do |f|
 	= f.error_notification	
 	.callout
-		.row.medium-unstack
-			.column
+		.row
+			.small-12.medium-6.column
 				= f.input :libelle
 				= f.input :unite
 				= f.input :price, as: :decimal
 				= f.association :tva
-			.column
+			.small-12.medium-6.column
 				h5= resource_class.human_attribute_name("description")
 				= quill_editor nil, { name: 'prestation[description]', value: f.object.description }
 	= f.button :submit, class: 'small'
