@@ -1,14 +1,15 @@
-PATH
-  remote: ../ajax-datatables-rails-master
+GIT
+  remote: git://github.com/jith51/bat-conseil-ad.git
+  revision: ebb5fdb89619a229dd808a4ae4197bd8a12b780d
   specs:
-    ajax-datatables-rails (0.2.1)
-      gon
+    bat-conseil-ad (0.2.1)
       railties (>= 3.1)
 
-PATH
-  remote: ../ajax_nested_form
+GIT
+  remote: git://github.com/jith51/bat-conseil-anf.git
+  revision: e1274c77a5008c8b57bf29486e7364fd752526da
   specs:
-    ajax_nested_form (0.0.1)
+    bat-conseil-anf (0.0.1)
       rails (>= 4.1.0)
 
 GEM
@@ -75,11 +76,6 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    gon (6.0.1)
-      actionpack (>= 3.0)
-      json
-      multi_json
-      request_store (>= 1.0)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -135,7 +131,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
-    request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     sass (3.4.18)
@@ -191,8 +186,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ajax-datatables-rails!
-  ajax_nested_form!
+  bat-conseil-ad!
+  bat-conseil-anf!
   bower-rails (~> 0.10.0)
   byebug
   coffee-rails (~> 4.1.0)
