@@ -1,0 +1,8 @@
+.fields
+	.row
+		.columns
+			= f.association :prestation, label: false
+		.large-1.columns
+			= f.input :quantite, as: :integer, label: false
+		.shrink.columns
+			= f.link_to_remove "X", class:'postfix'

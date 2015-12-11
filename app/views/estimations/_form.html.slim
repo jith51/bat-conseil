@@ -1,0 +1,28 @@
+= simple_form_for resource, wrapper: :min_inline_foundation  do |f|
+	= f.error_notification
+	.callout
+		.row
+			.small-12.medium-5.column
+				h5= "Données générales"
+				.callout
+					= f.input :libelle
+					= f.association :customer
+					= f.input :reference
+					= f.input :objet
+					= f.input :validity_date, as: :date
+					= f.input :intervention_dates
+
+			.small-12.medium-7.column
+				.row
+					.small-11.columns
+						h5.panel-title
+							= I18n.t(:volets, default: "Volets")
+					.small-1.columns
+						= f.link_to_add :volets, "Add", partial: 'estimations/volet_fields', class: 'button tiny secondary', target: "#volets"
+				hr
+				#volets
+					= f.fields_for :volets do |volet|
+						= render 'volet_fields', f: volet
+				/ = f.link_to_add :volets, "Add Volet", partial: 'estimations/volet_fields', class: 'button small secondary'
+	= f.button :submit, class:'button small'
+	= link_to I18n.t(:index), collection_path, class: 'button small secondary'	

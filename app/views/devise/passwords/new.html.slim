@@ -1,0 +1,7 @@
+.row.align-center
+  .large-3.column
+    .login-box
+      h5= "Reset password"
+      = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f|
+			  = f.input :email, required: true, autofocus: true
+			  = f.button :submit, "Envoi instructions"

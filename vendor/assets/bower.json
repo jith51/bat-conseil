@@ -1,0 +1,11 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "jquery": "latest",
+    "jquery-ujs": "latest",
+    "foundation-sites": "latest",
+    "DataTables": "latest",
+    "datatables-responsive": "latest",
+    "quill": "latest"
+  }
+}

@@ -1,0 +1,25 @@
+= simple_form_for resource, wrapper: :min_inline_foundation do |f|
+	= f.error_notification
+	.callout
+		.row.medium-unstack
+			.column
+				h5= "Données Client"
+				.callout
+					= f.input :customer_id
+					= f.input :civilite
+					= f.input :first_name
+					= f.input :last_name
+					= f.input :email, as: :email
+					= f.input :phone, as: :tel
+					= f.input :mobile, as: :tel
+			.column
+				.row
+					.columns.shrink
+						h5= "Adresses"
+					.columns
+						= f.link_to_add :adresses, "+", partial: 'customers/adress_fields', class: 'button tiny secondary', target: "#customer_adresses"
+				#customer_adresses
+					= f.simple_fields_for :adresses, wrapper: :min_inline_foundation do |adress|
+						= render 'adress_fields', f: adress
+	= f.button :submit, class: 'small'
+	= link_to I18n.t(:index), collection_path, class: 'button small secondary'	

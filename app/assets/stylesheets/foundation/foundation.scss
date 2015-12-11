@@ -1,0 +1,107 @@
+
+@import 'settings_and_customization';
+
+//
+// CUSTOMIZE FOUNDATION
+//
+
+.grid-content {
+  display: block;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-left: 0 1rem;
+  background-color: #f6f6f6;
+  margin: 0 auto;
+  padding-top: 10px;
+
+  &.collapse {
+    padding: 0;
+  }
+
+  max-width: 1200px;
+
+  @media only screen and (min-width: 90em) {
+    max-width: 1440px;
+  }
+
+  &.main-body {
+    background-color: #f6f6f6;
+  }
+
+}
+
+
+.dt-btn-edit {
+  @include button();
+  font-size: map-get($button-sizes, tiny);
+  background: $primary-color;
+  margin: 0px;
+  margin-right: 5px;
+}
+
+.dt-btn-show {
+  @include button();
+  font-size: map-get($button-sizes, tiny);
+  background: $medium-gray;
+  margin: 0px;
+  margin-right: 5px;
+}
+
+.dt-btn-delete {
+  @include button();
+  font-size: map-get($button-sizes, tiny);
+  background: $warning-color;
+  margin: 0px;
+  margin-right: 5px;
+}
+
+//
+// FORM
+//
+.group-form {
+  
+  @include flex-grid-row();
+  margin-bottom: 3px;
+
+  span {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+    &.like-input {
+      border: $input-border;
+      //background-color: $input-background-disabled;
+      background-color: #f6f6f6;
+      box-shadow: $input-shadow;
+      transition: $input-transition;
+      width:100%;
+      padding: 0.3em;
+    }
+  }
+
+  div {
+    padding: 0px;
+
+  }
+
+  input, select {
+    margin-bottom: 0px;
+  }
+
+  &.error {
+    label, abbr {
+      @extend .is-invalid-label;
+    }
+    input {
+      @extend .is-invalid-input;
+    }
+  }
+}
+
+// LOGIN BOX
+.login-box {
+  background: #fff;
+  border: 1px solid #ddd; 
+  margin: 100px 0;
+  padding: 40px 20px 20px 20px;
+}

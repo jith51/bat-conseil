@@ -1,0 +1,120 @@
+.estimation-main
+
+	- recap = []
+	- estimation_total_ht, estimation_total_ttc = 0
+	- estimation_tva = {}
+	-	Tva.all.each{|t| estimation_tva[t.id] = 0}
+
+	.text-center.title
+		' NATURE ET DESCRIPTIF DES TRAVAUX
+	br
+
+	- resource.volets.each do |volet|
+
+		- volet_total = 0
+
+		.volet_libelle
+			= volet.libelle
+		br
+		- volet.prestation_lines.each_with_index do |prestation_line, i|
+			.no-break
+				.small-12
+					= raw(prestation_line.description.gsub(/<div[^<]*>/, '\0' + "#{(i+1).to_s} - "))
+				.row.price-line
+					.small-6.columns
+						= prestation_line.quantite.to_s + ' ' +  prestation_line.unite + ' à ' + prestation_line.price.to_s + ' € HT par '+  prestation_line.unite
+					.small-2.columns.text-right
+						- volet_total += prestation_line.price * prestation_line.quantite
+						- estimation_tva[prestation_line.tva.id] += prestation_line.price * prestation_line.quantite * prestation_line.tva.value / 100
+						= "#{prestation_line.price * prestation_line.quantite} € HT"
+			br
+		.row.volet_total
+			.small-6.columns
+				' Sous-Total
+			.small-2.columns.text-right
+				= "#{volet_total} € HT"
+
+		br
+
+		- estimation_total_ht += volet_total
+		- recap << [volet.libelle, volet_total]
+
+	.no-break
+		.text-center.title
+			' RECAPITULATIF
+
+		- recap.each do |volet|
+			.row
+				.small-8.columns
+					= volet[0]
+				.small-2.columns.text-right
+					= volet[1]
+				.small-1.columns
+					' € HT
+		.row
+			.small-8.columns
+				' MONTANT TOTAL HT
+			.small-2.columns.text-right
+				= estimation_total_ht
+			.small-1.columns
+				' € HT
+		- estimation_total_ttc = estimation_total_ht
+		- estimation_tva.each do |k, v|
+			- if !(v == 0)
+				.row
+					.small-8.columns
+						= "TVA à #{Tva.find(k).name} %"
+					.small-2.columns.text-right
+						= v
+					.small-1.columns
+						' €
+			- estimation_total_ttc += v
+		.row
+			.small-8.columns
+				' MONTANT TOTAL TTC
+			.small-2.columns.text-right
+				= estimation_total_ttc
+			.small-1.columns
+				' € TTC
+
+	.text-center.title
+		' CONDITIONS
+
+	.no-break
+		' A/ DE REGLEMENT
+		br
+		' - Acompte commande : 30%
+		br
+		' - Le solde fin de travaux
+	br
+
+	.no-break
+		' B/ DE GARANTIE
+	br
+
+	.no-break
+		' C/ ACCEPTATION DU PRESENT DEVIS
+		br
+		' - Le prix mentionné ci-dessus est sous réserve de l'état réel du dit ouvrage constaté lors de la mise en oeuvre des travaux et du démontage de l'existant.
+		br
+		= " - Le prix indiqué est valable jusqu’au #{resource.validity_date.strftime('%d %B %Y')}."
+	br
+
+	.no-break.text-justify
+		' D) DATE d'INTERVENTION :
+		br
+		= resource.intervention_dates + "."
+		br
+		' Dans le cadre d'un accord, nous vous remercions de nous retourner le double de ce devis annoté de la mention "Devis reçu avant exécution des travaux, Bon pour accord", précisant le mode de règlement, mentionnant le lieu et date de signature, accompagné de l’attestation “Age de la propriété” vous permettant de bénéficier du taux réduit de TVA dûment complétée.
+		br
+		' Recevez, Madame, Monsieur, l'expression de nos sentiments distingués.
+
+	.page-break
+
+	.text-center.title
+		= "ACCORD SUR DEVIS REFERENCE #{resource.reference}"
+	br
+
+	.row
+		.small-5.columns.large-offset-7
+			' YYYYY'

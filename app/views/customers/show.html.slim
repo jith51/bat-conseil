@@ -1,0 +1,23 @@
+.callout
+	.row.medium-unstack
+		.column
+			h5= "Données Client"
+			.callout
+				= simple_min_tag(resource_class.human_attribute_name("customer_id"), resource.customer_id)
+				= simple_min_tag(resource_class.human_attribute_name("civilite"), resource.civilite)
+				= simple_min_tag(resource_class.human_attribute_name("first_name"), resource.first_name)
+				= simple_min_tag(resource_class.human_attribute_name("last_name"), resource.last_name)	
+				= simple_min_tag(resource_class.human_attribute_name("email"), resource.email)
+				= simple_min_tag(resource_class.human_attribute_name("phone"), resource.phone)
+				= simple_min_tag(resource_class.human_attribute_name("mobile"), resource.mobile)
+		.column
+			h5= "Adresses"
+			- resource.adresses.each do |adress|
+				.callout
+					= simple_min_tag(Customer::Adress.human_attribute_name("name"), adress.name)
+					= simple_min_tag(Customer::Adress.human_attribute_name("rue"), adress.rue)
+					= simple_min_tag(Customer::Adress.human_attribute_name("complement"), adress.complement)
+					= simple_min_tag(Customer::Adress.human_attribute_name("code_postal"), adress.code_postal)
+					= simple_min_tag(Customer::Adress.human_attribute_name("ville"), adress.ville)
+= link_to I18n.t(:edit), edit_resource_path(resource.id), class: 'button small'
+= link_to I18n.t(:index), collection_path, class: 'button small secondary'

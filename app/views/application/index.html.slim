@@ -1,0 +1,6 @@
+.callout
+	table.display.hover.responsive.nowrap id="#{controller_name}" cellspacing="0" width="100%"
+
+javascript:
+	var table = $('##{controller_name}').dataTable(#{@datatable_set.to_json.html_safe});
+	$("div.toolbar").html("#{j (render partial: 'datatable_toolbar')}");

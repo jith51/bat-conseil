@@ -1,0 +1,28 @@
+.estimation-main {
+	background: white;
+/*	width: 21cm;
+	height:29,7cm;
+	overflow-y : scroll;
+*/}
+
+.title {
+	color: #0000FF;
+}
+
+.no-break {
+  page-break-inside: avoid !important;
+}
+
+.page-break { 
+	display:block;
+	clear:both; 
+	page-break-after:always; 
+}
+
+.volet_libelle, .volet_total {
+	color: #00FF80;
+}
+
+.price-line {
+	padding-top:4px;
+}

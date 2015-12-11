@@ -1,0 +1,8 @@
+.callout
+	= simple_tag('Client', resource.customer.name)
+	= simple_tag('Référence', resource.reference)
+	= simple_tag('Objet', resource.objet)
+	= simple_tag 'Devis' do 
+		= render partial: 'estimation_body'
+= link_to :generate_pdf, generate_pdf_estimation_path(resource, format: :pdf), class: "button small right", target: '_blank'
+= link_to :send_pdf, send_pdf_estimation_path(resource), class: "button small right"
