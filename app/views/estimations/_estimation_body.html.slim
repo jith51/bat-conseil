@@ -5,9 +5,11 @@
 	- estimation_tva = {}
 	-	Tva.all.each{|t| estimation_tva[t.id] = 0}
 
-	.text-center.title
-		' NATURE ET DESCRIPTIF DES TRAVAUX
-	br
+	//
+	// NATURE ET DESCRIPTIF DES TRAVAUX
+	//
+
+	= h_title 'NATURE ET DESCRIPTIF DES TRAVAUX'
 
 	- resource.volets.each do |volet|
 
@@ -15,70 +17,44 @@
 
 		.volet_libelle
 			= volet.libelle
-		br
+		
 		- volet.prestation_lines.each_with_index do |prestation_line, i|
 			.no-break
-				.small-12
-					= raw(prestation_line.description.gsub(/<div[^<]*>/, '\0' + "#{(i+1).to_s} - "))
-				.row.price-line
-					.small-6.columns
-						= prestation_line.quantite.to_s + ' ' +  prestation_line.unite + ' à ' + prestation_line.price.to_s + ' € HT par '+  prestation_line.unite
-					.small-2.columns.text-right
-						- volet_total += prestation_line.price * prestation_line.quantite
-						- estimation_tva[prestation_line.tva.id] += prestation_line.price * prestation_line.quantite * prestation_line.tva.value / 100
-						= "#{prestation_line.price * prestation_line.quantite} € HT"
+				= raw(prestation_line.description.gsub(/<div[^<]*>/, '\0' + "#{(i+1).to_s} - "))
+				= h_prestation_line "#{prestation_line.quantite} #{prestation_line.unite} à #{prestation_line.price} € HT par #{prestation_line.unite}", (prestation_line.price * prestation_line.quantite), '€ HT'
 			br
-		.row.volet_total
-			.small-6.columns
-				' Sous-Total
-			.small-2.columns.text-right
-				= "#{volet_total} € HT"
-
-		br
+			- volet_total += prestation_line.price * prestation_line.quantite
+			- estimation_tva[prestation_line.tva.id] += prestation_line.price * prestation_line.quantite * prestation_line.tva.value / 100
+			
+		.volet_total
+			= h_prestation_line 'Sous-Total', volet_total, '€ HT'
+		
 
 		- estimation_total_ht += volet_total
 		- recap << [volet.libelle, volet_total]
 
+	//
+	// RECAPITULATIF
+	//
 	.no-break
-		.text-center.title
-			' RECAPITULATIF
+		= h_title 'RECAPITULATIF'
 
 		- recap.each do |volet|
-			.row
-				.small-8.columns
-					= volet[0]
-				.small-2.columns.text-right
-					= volet[1]
-				.small-1.columns
-					' € HT
-		.row
-			.small-8.columns
-				' MONTANT TOTAL HT
-			.small-2.columns.text-right
-				= estimation_total_ht
-			.small-1.columns
-				' € HT
+			= h_prestation_line volet[0], volet[1], '€ HT'
+		= h_prestation_line 'MONTANT TOTAL HT', estimation_total_ht, '€ HT'
+
 		- estimation_total_ttc = estimation_total_ht
 		- estimation_tva.each do |k, v|
 			- if !(v == 0)
-				.row
-					.small-8.columns
-						= "TVA à #{Tva.find(k).name} %"
-					.small-2.columns.text-right
-						= v
-					.small-1.columns
-						' €
+				= h_prestation_line "TVA à #{Tva.find(k).name} %", v, '€'
 			- estimation_total_ttc += v
-		.row
-			.small-8.columns
-				' MONTANT TOTAL TTC
-			.small-2.columns.text-right
-				= estimation_total_ttc
-			.small-1.columns
-				' € TTC
 
-	.text-center.title
-		' CONDITIONS
+		= h_prestation_line 'MONTANT TOTAL TTC', estimation_total_ttc, '€ HT'
+
+	//
+	// CONDITION
+	//
+	= h_title 'CONDITIONS'
 
 	.no-break
 		' A/ DE REGLEMENT
@@ -88,11 +64,11 @@
 		' - Le solde fin de travaux
 	br
 
-	.no-break
+	.no-break.text-justify
 		' B/ DE GARANTIE
 	br
 
-	.no-break
+	.no-break.text-justify
 		' C/ ACCEPTATION DU PRESENT DEVIS
 		br
 		' - Le prix mentionné ci-dessus est sous réserve de l'état réel du dit ouvrage constaté lors de la mise en oeuvre des travaux et du démontage de l'existant.
@@ -109,11 +85,13 @@
 		br
 		' Recevez, Madame, Monsieur, l'expression de nos sentiments distingués.
 
-	.page-break
+	//
+	// ACCORD SUR DEVIS
+	//
 
-	.text-center.title
-		= "ACCORD SUR DEVIS REFERENCE #{resource.reference}"
-	br
+	.page-break
+	
+	= h_title "ACCORD SUR DEVIS REFERENCE #{resource.reference}"
 
 	.row
 		.small-5.columns.large-offset-7

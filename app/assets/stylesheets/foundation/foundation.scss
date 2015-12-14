@@ -1,5 +1,5 @@
 
-@import 'settings_and_customization';
+@import 'settings_and_imports';
 
 //
 // CUSTOMIZE FOUNDATION
@@ -102,3 +102,28 @@
   margin: 100px 0;
   padding: 40px 20px 20px 20px;
 }
+
+//
+// PDF GRID
+//
+
+.prestation_line {
+  @include grid-row(20) {
+    padding-top:4px;
+    .libelle {
+      @include grid-column(15);
+      padding-right:10px;
+    }
+   .price {
+      @include grid-column(3);
+      @include grid-column-collapse();
+      @extend .text-right;
+    } 
+  .currency {
+      @include grid-column-end;
+      @include grid-column-collapse;
+      padding-left: 4px;
+    } 
+  }
+}
+
