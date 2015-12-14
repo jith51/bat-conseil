@@ -42,12 +42,6 @@ gem 'inherited_resources', '>= 1.4.1'
 
 # Helper views
 gem "simple_form", '3.1.0.rc2'
-# gem "ajax_nested_form", path: '../ajax_nested_form'
-gem "bat-conseil-anf", git: 'git://github.com/jith51/bat-conseil-anf.git'
-
-
-# gem 'ajax-datatables-rails', path: '../ajax-datatables-rails-master'
-gem "bat-conseil-ad", git: 'git://github.com/jith51/bat-conseil-ad.git'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

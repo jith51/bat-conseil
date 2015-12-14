@@ -1,0 +1,6 @@
+<%= fields_for record, @object do |f| %>
+	<% object_association = ( (f.object.class.reflect_on_association(association).macro == :has_many) ? f.object.send(association).build : f.object.send("build_#{association.to_s}".to_sym) ) %>
+	<%= f.fields_for association, object_association, options do |f| %>
+		<%= render partial, f: f %>
+ 	<% end%>
+<% end %>

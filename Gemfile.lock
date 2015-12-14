@@ -1,17 +1,3 @@
-GIT
-  remote: git://github.com/jith51/bat-conseil-ad.git
-  revision: ebb5fdb89619a229dd808a4ae4197bd8a12b780d
-  specs:
-    bat-conseil-ad (0.2.1)
-      railties (>= 3.1)
-
-GIT
-  remote: git://github.com/jith51/bat-conseil-anf.git
-  revision: e1274c77a5008c8b57bf29486e7364fd752526da
-  specs:
-    bat-conseil-anf (0.0.1)
-      rails (>= 4.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -186,8 +172,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bat-conseil-ad!
-  bat-conseil-anf!
   bower-rails (~> 0.10.0)
   byebug
   coffee-rails (~> 4.1.0)

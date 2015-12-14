@@ -3,7 +3,7 @@ class EstimationsDatatable < AjaxDatatablesRails::Base
   # depending on gems available in your project.
   # include AjaxDatatablesRails::Extensions::Kaminari
   # include AjaxDatatablesRails::Extensions::WillPaginate
-  include AjaxDatatablesRails::Extensions::SimplePaginator
+  # include AjaxDatatablesRails::Extensions::SimplePaginator
   include DatatableHelper
 
   def_delegators :@view, :current_user, :link_to, :collection, :edit_resource_path, :resource_path

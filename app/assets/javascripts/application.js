@@ -25,7 +25,7 @@
 //
 // NON GEM FILES
 //
-//= require ajax_nested_form/nested_form
+//= require nested_form
 //
 // OTHERS
 //

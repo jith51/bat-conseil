@@ -4,7 +4,7 @@
 			= simple_min_tag(resource_class.human_attribute_name("libelle"), resource.libelle)
 			= simple_min_tag(resource_class.human_attribute_name("unite"), resource.unite)
 			= simple_min_tag(resource_class.human_attribute_name("price"), resource.price)
-			= simple_min_tag(resource_class.human_attribute_name("tva"), resource.tva.name)	
+			= simple_min_tag(resource_class.human_attribute_name("tva"), resource.tva.try(:name))
 		.column
 			= simple_min_tag(resource_class.human_attribute_name("description"), resource.description.html_safe)
 

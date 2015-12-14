@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  mount AjaxNestedForm::Engine => "ajax_nested_form/"
+  # mount AjaxNestedForm::Engine => "ajax_nested_form/"
+  match 'add_nested_fields' => 'nested_form#add_nested_fields', via: :get
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   root 'application#index'
