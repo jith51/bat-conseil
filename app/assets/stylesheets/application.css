@@ -10,19 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ * require_tree .
  *= require_self
  *
  * BOWER FILES
  *
- *= require dataTables/media/css/dataTables.foundation
+ *= require DataTables/media/css/dataTables.foundation.min
  *= require datatables-responsive/css/responsive.foundation
- *= require dataTables/media/css/jquery.dataTables
+ *= require DataTables/media/css/jquery.dataTables.min
  *= require datatables-responsive/css/responsive.dataTables
  *= require quill/dist/quill.snow
  *
  * OTHERS
  *
  *= require foundation/foundation
+ *= require estimation
+ *= require prestation
  *
  */
