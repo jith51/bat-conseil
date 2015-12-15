@@ -22,6 +22,8 @@
 //= require quill/dist/quill.min
 //
 //= require foundation-sites/dist/foundation.min
+//= require foundation-datepicker/js/foundation-datepicker.min
+//= require foundation-datepicker/js/locales/foundation-datepicker.fr
 //
 // NON GEM FILES
 //

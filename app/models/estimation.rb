@@ -3,6 +3,12 @@ class Estimation < ActiveRecord::Base
 	has_many :volets, dependent: :destroy
 	accepts_nested_attributes_for :volets, allow_destroy: true
 
+	#
+	# validation
+	#
+	validates :libelle, :objet, :reference, :intervention_dates, :validity_date, presence: :true
+
+
 	def generate_pdf
 		# Initialisation
 		pdf = Prawn::Document.new(page_size: 'A4')

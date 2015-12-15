@@ -4,6 +4,8 @@
 asset 'jquery'
 asset 'jquery-ujs'
 asset 'foundation-sites'
+asset 'foundation-icon-fonts'
 asset 'DataTables'
 asset 'datatables-responsive'
 asset 'quill'
+asset 'foundation-datepicker'

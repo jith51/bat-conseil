@@ -1,6 +1,7 @@
 .fields.callout
 	.clearfix
-		= f.link_to_remove "X", class:'postfix float-right'
+		= f.link_to_remove "", class:'postfix float-right' do 
+			i.step.fi-minus-circle.minus-alert-icon
 	= f.input :name
 	= f.input :rue
 	= f.input :complement

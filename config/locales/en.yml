@@ -25,7 +25,8 @@ en:
   show: 'Voir'
   delete: 'Supprimer'
   new: 'Nouveau'
-  index: 'List'
+  index: 'Liste'
+  add_prestation: 'Ajouter Prestation'
 
   activerecord:
     models:

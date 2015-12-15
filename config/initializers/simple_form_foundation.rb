@@ -15,7 +15,7 @@ SimpleForm.setup do |config|
     # b.use :hint,  wrap_with: { tag: :span, class: :hint }
   end
 
-  config.wrappers :inline_foundation, class: :input, hint_class: :field_with_hint, error_class: 'is-invalid-input' do |b|
+  config.wrappers :inline_foundation, class: :input, hint_class: :field_with_hint, error_class: :error do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -26,22 +26,42 @@ SimpleForm.setup do |config|
     b.wrapper tag: 'div', class: 'group-form prefix-radius' do |c|
       c.use :label, wrap_with: { tag: 'span', class: 'small-12 medium-12 large-5 column' }
       c.use :input, wrap_with: { tag: 'div', class: 'small-12 medium-12 large-7 column' }
-      c.use :error, wrap_with: { tag: 'span', class: 'form-error is-visible' }
+      c.use :error, wrap_with: { tag: 'div', class: 'form-error is-visible' }
     end
 
   end
 
-  config.wrappers :min_inline_foundation, class: :input, hint_class: :field_with_hint, error_class: 'is-invalid-input' do |b|
+  # config.wrappers :min_inline_foundation, class: 'input', hint_class: :field_with_hint, error_class: :error do |b|
+  #   b.use :html5
+  #   b.use :placeholder
+  #   b.optional :maxlength
+  #   b.optional :pattern
+  #   b.optional :min_max
+  #   b.optional :readonly
+  
+  #   b.wrapper tag: 'div', class: 'group-form prefix-radius' do |c|
+  #     c.use :label, wrap_with: { tag: 'span', class: 'small-12 medium-12 large-3 column' }
+  #     c.use :input, wrap_with: { tag: 'div', class: 'small-12 medium-12 large-9 column' }
+  #   end
+  #   b.use :error, wrap_with: { tag: 'div', class: 'form-error is-visible' }
+
+  # end
+  config.wrappers :min_inline_foundation, class: 'group-form', hint_class: :field_with_hint, error_class: :error do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-  
-    b.wrapper tag: 'div', class: 'group-form prefix-radius' do |c|
-      c.use :label, wrap_with: { tag: 'span', class: 'small-12 medium-12 large-3 column' }
-      c.use :input, wrap_with: { tag: 'div', class: 'small-12 medium-12 large-9 column' }
+
+    # b.wrapper tag: 'div', class: 'small-12 medium-12 large-3 column' do |c|
+    #   c.use :input
+    #   c.use :error, class: 'form-error is-visible'
+    # end
+    b.use :label, wrap_with: { tag: 'div', class: 'small-12 medium-12 large-3 column' }
+
+    b.wrapper tag: 'div', class: 'small-12 medium-12 large-9 column' do |c|
+      c.use :input
       c.use :error, wrap_with: { tag: 'span', class: 'form-error is-visible' }
     end
 
@@ -51,7 +71,7 @@ SimpleForm.setup do |config|
   config.button_class = 'button'
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'alert-box alert'
+  config.error_notification_class = 'alert callout'
 
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :min_inline_foundation

@@ -3,11 +3,12 @@
 		.columns
 			= f.input :libelle, label: false, wrapper: :foundation
 		.shrink.columns
-			= f.link_to_remove "X", class:'postfix'
+			= f.link_to_remove "", class:'postfix' do
+				i.step.fi-minus-circle.minus-alert-icon
 	#prestations-target.panel
 		= f.fields_for :prestation_lines do |prestation_line|
 			= render 'prestation_line_fields', f: prestation_line
-		= f.link_to_add :prestation_lines, "Add Prestations", partial: 'estimations/prestation_line_fields', class: 'button tiny secondary'
+		= f.link_to_add :prestation_lines, t(:add_prestation), partial: 'estimations/prestation_line_fields', class: 'button tiny secondary'
 	hr
 
 	

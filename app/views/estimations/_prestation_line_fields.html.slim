@@ -1,8 +1,9 @@
 .fields
 	.row
-		.columns
+		.column
 			= f.association :prestation, label: false, wrapper: :foundation
-		.small-3.medium-3.large-2.columns
+		.small-3.medium-3.large-2.column
 			= f.input :quantite, as: :integer, label: false, wrapper: :foundation
-		.shrink.columns
-			= f.link_to_remove "X", class:'postfix'
+		.shrink.column
+			= f.link_to_remove "", class:'postfix' do
+				i.step.fi-minus-circle.minus-icon

@@ -1,8 +1,8 @@
 = simple_form_for resource, wrapper: :min_inline_foundation do |f|
 	= f.error_notification
 	.callout
-		.row.medium-unstack
-			.column
+		.row
+			.small-12.medium-6.column
 				h5= "Données Client"
 				.callout
 					= f.input :customer_id
@@ -12,12 +12,15 @@
 					= f.input :email, as: :email
 					= f.input :phone, as: :tel
 					= f.input :mobile, as: :tel
-			.column
+			.small-12.medium-6.column
 				.row
 					.columns.shrink
 						h5= "Adresses"
-					.columns
-						= f.link_to_add :adresses, "+", partial: 'customers/adress_fields', class: 'button tiny secondary', target: "#customer_adresses"
+					.columns.uncollapse
+						/ = f.link_to_add :adresses, "+", partial: 'customers/adress_fields', class: 'button tiny secondary', target: "#customer_adresses"
+						= f.link_to_add :adresses, partial: 'customers/adress_fields', target: "#customer_adresses" do
+							i.step.fi-plus.plus-icon
+
 				#customer_adresses
 					= f.simple_fields_for :adresses, wrapper: :min_inline_foundation do |adress|
 						= render 'adress_fields', f: adress

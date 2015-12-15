@@ -10,7 +10,7 @@
   flex: 1 1 auto;
   overflow-y: auto;
   padding-left: 0 1rem;
-  background-color: #f6f6f6;
+  background-color: white;
   margin: 0 auto;
   padding-top: 10px;
 
@@ -60,6 +60,28 @@
   @include flex-grid-row();
   margin-bottom: 3px;
 
+  label {
+    margin: 0px;
+  }
+
+  div {
+    padding: 0px;
+
+  }
+
+  input, select {
+    margin-bottom: 0px;
+  }
+
+  &.error {
+    label{
+      @extend .is-invalid-label;
+    }
+    input, select, textarea {
+      @extend .is-invalid-input;
+    }
+  }
+
   span {
     padding-top: 3px;
     padding-bottom: 3px;
@@ -73,24 +95,6 @@
       transition: $input-transition;
       width:100%;
       padding: 0.3em;
-    }
-  }
-
-  div {
-    padding: 0px;
-
-  }
-
-  input, select {
-    margin-bottom: 0px;
-  }
-
-  &.error {
-    label, abbr {
-      @extend .is-invalid-label;
-    }
-    input {
-      @extend .is-invalid-input;
     }
   }
 }
@@ -127,3 +131,17 @@
   }
 }
 
+//
+// icon size
+//
+.plus-icon {
+ font-size: 18px;
+}
+.minus-icon {
+  color: $warning-color; 
+  font-size: 16px;
+}
+.minus-alert-icon {
+  color: $alert-color; 
+  font-size: 16px;
+}

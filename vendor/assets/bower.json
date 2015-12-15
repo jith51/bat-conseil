@@ -4,8 +4,10 @@
     "jquery": "latest",
     "jquery-ujs": "latest",
     "foundation-sites": "latest",
+    "foundation-icon-fonts": "latest",
     "DataTables": "latest",
     "datatables-responsive": "latest",
-    "quill": "latest"
+    "quill": "latest",
+    "foundation-datepicker": "latest"
   }
 }

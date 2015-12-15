@@ -20,6 +20,8 @@
  *= require DataTables/media/css/jquery.dataTables.min
  *= require datatables-responsive/css/responsive.dataTables
  *= require quill/dist/quill.snow
+ *= require foundation-datepicker/css/foundation-datepicker.min
+ *= require foundation-icon-fonts/foundation-icons
  *
  * OTHERS
  *
