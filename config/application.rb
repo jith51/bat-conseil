@@ -17,6 +17,7 @@ module BatConseil
     end
     # on renseigne le path du css de foundations site cat _setting fait un import depuis ce repertoire
     config.assets.paths << Rails.root.join("vendor", "assets", "bower_components", "foundation-sites", "scss")
+    config.assets.paths << Rails.root.join("vendor", "assets", "bower_components", "foundation-icon-fonts")
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
