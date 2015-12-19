@@ -3,8 +3,9 @@
   "dependencies": {
     "jquery": "latest",
     "jquery-ujs": "latest",
-    "foundation-sites": "latest",
+    "foundation-sites": "6.0.5",
     "foundation-icon-fonts": "latest",
+    "motion-ui": "latest",
     "DataTables": "latest",
     "datatables-responsive": "latest",
     "quill": "latest",

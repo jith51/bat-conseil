@@ -38,7 +38,8 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # Skinny controller
 gem 'inherited_resources', '>= 1.4.1'
-# gem 'has_scope'
+# gem "responders"
+gem 'has_scope'
 
 # Helper views
 gem "simple_form", '3.1.0.rc2'

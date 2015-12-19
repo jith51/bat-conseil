@@ -231,10 +231,12 @@ fr:
   new: 'Nouveau'
   index: 'Liste'
   add_prestation: 'Ajouter Prestation'
+  pdf: Pdf
 
   activerecord:
     models:
       customer: 'Client'
+      guaranty: 'Type de garantie'
     attributes:
       customer:
         customer_id: 'N° client'
@@ -243,7 +245,7 @@ fr:
         last_name: 'Prénom'
         phone: 'Téléphone'
         mobile: 'Mobile'
-        email: 'E-Mail'    
+        email: 'E-Mail' 
       customer/adress:
         name: 'Libellé'
         rue: 'Rue'
@@ -261,7 +263,13 @@ fr:
         reference: 'Référence'
         objet: 'Objet'
         validity_date: 'Date de validité'
-        intervention_dates: 'Dates d''intervention'
+        intervention_dates: Dates d'intervention
+        guaranty: 'Garantie'
+      tva:
+        value: Valeur
+      guaranty:
+      libelle: Libellé
+      description: Description
 
   datatable:
     customers:
@@ -281,3 +289,8 @@ fr:
       reference: 'Référence'
       customer: 'Client'
       actions: 'Actions'
+    tvas:
+      value: Valeur
+    guaranties:
+      libelle: Libellé
+      description: Description

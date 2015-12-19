@@ -19,10 +19,10 @@
 			= volet.libelle
 		
 		- volet.prestation_lines.each_with_index do |prestation_line, i|
-			.no-break
+			.no-break.prestation
 				= raw(prestation_line.description.gsub(/<div[^<]*>/, '\0' + "#{(i+1).to_s} - "))
 				= h_prestation_line "#{prestation_line.quantite} #{prestation_line.unite} à #{prestation_line.price} € HT par #{prestation_line.unite}", (prestation_line.price * prestation_line.quantite), '€ HT'
-			br
+			
 			- volet_total += prestation_line.price * prestation_line.quantite
 			- estimation_tva[prestation_line.tva.id] += prestation_line.price * prestation_line.quantite * prestation_line.tva.value / 100
 			
@@ -58,26 +58,26 @@
 
 	.no-break
 		' A/ DE REGLEMENT
-		br
-		' - Acompte commande : 30%
-		br
-		' - Le solde fin de travaux
-	br
+		ul
+			li
+				' Acompte commande : 30%
+			li
+				' Le solde fin de travaux
 
 	.no-break.text-justify
 		' B/ DE GARANTIE
-	br
+		= raw(resource.guaranty.description)
 
 	.no-break.text-justify
 		' C/ ACCEPTATION DU PRESENT DEVIS
-		br
-		' - Le prix mentionné ci-dessus est sous réserve de l'état réel du dit ouvrage constaté lors de la mise en oeuvre des travaux et du démontage de l'existant.
-		br
-		= " - Le prix indiqué est valable jusqu’au #{resource.validity_date.strftime('%d %B %Y')}."
-	br
+		ul
+			li
+				' Le prix mentionné ci-dessus est sous réserve de l'état réel du dit ouvrage constaté lors de la mise en oeuvre des travaux et du démontage de l'existant.
+			/ li= "Le prix indiqué est valable jusqu’au #{resource.validity_date.strftime('%d %B %Y')}."
+			li= "Le prix indiqué est valable jusqu’au #{l resource.validity_date}."
 
 	.no-break.text-justify
-		' D) DATE d'INTERVENTION :
+		' D/ DATE d'INTERVENTION :
 		br
 		= resource.intervention_dates + "."
 		br

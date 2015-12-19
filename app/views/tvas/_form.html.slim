@@ -1,0 +1,7 @@
+= simple_form_for resource, wrapper: :min_inline_foundation do |f|
+	= f.error_notification	
+	.callout
+		.small-12.medium-6.column
+			= f.input :value
+	= f.button :submit, class: 'small'
+	= link_to I18n.t(:index), collection_path, class: 'button small secondary'

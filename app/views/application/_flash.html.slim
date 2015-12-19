@@ -1,0 +1,6 @@
+- flash.each do |name, msg|
+	.callout class="#{name == :notice ? "success" : "alert"}"  data-closable=""
+		p= msg if msg.is_a?(String)
+		button.close-button aria-label="Close alert" type="button" data-close=""
+			span aria-hidden="true"
+				'&times;

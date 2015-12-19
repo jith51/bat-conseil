@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   # mount AjaxNestedForm::Engine => "ajax_nested_form/"
   match 'add_nested_fields' => 'nested_form#add_nested_fields', via: :get
+  #
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   root 'application#index'
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
   #   resources :products
   resources :customers
   resources :prestations
+  resources :tvas
+  resources :guaranties
   resources :estimations do 
     member do
       get 'generate_pdf'

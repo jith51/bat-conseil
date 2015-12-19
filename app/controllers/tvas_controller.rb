@@ -1,0 +1,3 @@
+class TvasController < BaseController
+
+end

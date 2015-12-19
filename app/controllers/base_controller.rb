@@ -41,8 +41,7 @@ class BaseController < InheritedResources::Base
 
     def delete_errors(exception)
       if resource
-        resource.errors.add(:base, exception) 
-        flash[:error] = "#{exception}"
+        flash[:error] = "Impossible de supprimer cette enregistrement car il est référencé par un autre objet."
         respond_to do |format|
           format.html {redirect_to :back}
           format.js

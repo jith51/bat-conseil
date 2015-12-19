@@ -6,14 +6,15 @@ class EstimationsDatatable < AjaxDatatablesRails::Base
   # include AjaxDatatablesRails::Extensions::SimplePaginator
   include DatatableHelper
 
-  def_delegators :@view, :current_user, :link_to, :collection, :edit_resource_path, :resource_path
+  def_delegators :@view, :current_user, :link_to, :collection, :edit_resource_path, :resource_path, :generate_pdf_estimation_path
 
   def datatable_options
     {
       responsive: true,
       serverSide: false,
       ajax: nil,
-      dom: "<'row'<'columns'<'float-left'f>><'toolbar columns'>r>"+"t"+"<'row'<'columns'i><'columns'p>>",
+      # dom: "<'row'<'columns'<'float-left'f>><'toolbar columns'>r>"+"t"+"<'row'<'columns'i><'columns'p>>",
+      dom: "<'dt-toolbar-grid'<'column'<'float-left'f>><'toolbar column'>r>"+"t"+"<'row'<'columns'i><'columns'p>>",
       oLanguage: { "sSearch": '<i class="fi-magnifying-glass hide-for-small-only"></i>' },
       scrollCollapse: true,
       pagingType: "numbers",
@@ -41,6 +42,7 @@ class EstimationsDatatable < AjaxDatatablesRails::Base
       actions: [
         dt_link_to(:edit, edit_resource_path(record.id)),
         dt_link_to(:show, resource_path(record.id)),
+        dt_link_to(:pdf, generate_pdf_estimation_path(record.id, format: :pdf), target: '_blank'),
         dt_link_to(:delete, resource_path(record.id))
         ].join(" ")
     }

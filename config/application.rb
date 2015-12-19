@@ -8,9 +8,15 @@ Bundler.require(*Rails.groups)
 
 module BatConseil
   class Application < Rails::Application
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.to_prepare do
+      Devise::SessionsController.layout "devise" 
+    end
+    # on renseigne le path du css de foundations site cat _setting fait un import depuis ce repertoire
+    config.assets.paths << Rails.root.join("vendor", "assets", "bower_components", "foundation-sites", "scss")
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

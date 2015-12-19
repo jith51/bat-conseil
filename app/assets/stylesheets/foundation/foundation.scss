@@ -1,9 +1,94 @@
+@charset 'utf-8';
 
-@import 'settings_and_imports';
+// SETTINGS
+
+@import "foundation-sites/scss/settings/settings";
+//@import "settings_and_imports";
+
+// 1. Global
+// ---------
+$global-font-size: 90%;
+
+// 3. The Grid
+// -----------
+$block-grid-max: 6;
+
+// 11. Button
+// ----------
+$button-margin: 0 $global-margin 0 0;
+
+// 19. Forms
+// ---------
+$form-spacing: 0.6rem;
+$input-font-size: rem-calc(13);
+
+// 34. Top Bar
+// -----------
+$topbar-link-color: $primary-color;
+
+
+@import "foundation-sites/scss/foundation";
+@import "motion-ui/dist/motion-ui.min";
+
+
+@include foundation-global-styles;
+@include foundation-flex-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+//@include foundation-accordion;
+//@include foundation-accordion-menu;
+@include foundation-badge;
+//@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-close-button;
+@include foundation-drilldown-menu;
+//@include foundation-dropdown;
+@include foundation-dropdown-menu;
+//@include foundation-flex-video;
+@include foundation-label;
+//@include foundation-media-object;
+@include foundation-menu;
+//@include foundation-off-canvas;
+//@include foundation-orbit;
+//@include foundation-pagination;
+//@include foundation-progress-bar;
+//@include foundation-slider;
+//@include foundation-sticky;
+//@include foundation-reveal;
+//@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+//@include foundation-thumbnail;
+@include foundation-title-bar;
+//@include foundation-tooltip;
+@include foundation-top-bar;
+
+
+//@import 'settings_and_imports';
 
 //
 // CUSTOMIZE FOUNDATION
 //
+.row {
+  width: 100%;
+  max-width: 100%;
+}
+
+//
+// DATATABLE TOOLBAR GRID
+//
+.dt-toolbar-grid {
+  @include flex-grid-row();
+  width: 100%;
+  max-width: 100%;
+  .column {
+    @include flex-grid-column($gutter: 0px);
+  }  
+}
 
 .grid-content {
   display: block;
@@ -47,6 +132,13 @@
 
 .dt-btn-delete {
   @include button($background: $warning-color, $background-hover:auto);
+  font-size: map-get($button-sizes, tiny);
+  margin: 0px;
+  margin-right: 5px;
+}
+
+.dt-btn-pdf {
+  @include button($background: $success-color, $background-hover:auto);
   font-size: map-get($button-sizes, tiny);
   margin: 0px;
   margin-right: 5px;
@@ -144,4 +236,8 @@
 .minus-alert-icon {
   color: $alert-color; 
   font-size: 16px;
+}
+
+.without-top-margin {
+  margin-top: 0px;
 }

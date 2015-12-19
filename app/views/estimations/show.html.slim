@@ -4,5 +4,7 @@
 	= simple_tag('Objet', resource.objet)
 	= simple_tag 'Devis' do 
 		= render partial: 'estimation_body'
-= link_to :generate_pdf, generate_pdf_estimation_path(resource, format: :pdf), class: "button small right", target: '_blank'
+= link_to I18n.t(:pdf), generate_pdf_estimation_path(resource, format: :pdf), class: "button small right", target: '_blank'
 = link_to :send_pdf, send_pdf_estimation_path(resource), class: "button small right"
+= link_to I18n.t(:edit), edit_resource_path(resource.id), class: 'button small'
+= link_to I18n.t(:index), collection_path, class: 'button small secondary'

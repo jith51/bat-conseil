@@ -11,6 +11,7 @@
 					= f.input :objet
 					= f.input :validity_date, as: :fdatepicker
 					= f.input :intervention_dates
+					= f.association :guaranty
 
 			.small-12.medium-7.column
 				.row
@@ -19,7 +20,7 @@
 					.column
 						= f.link_to_add :volets, partial: 'estimations/volet_fields', target: "#volets" do
 							i.step.fi-plus.plus-icon
-				hr
+				hr.without-top-margin 
 				#volets
 					= f.fields_for :volets do |volet|
 						= render 'volet_fields', f: volet

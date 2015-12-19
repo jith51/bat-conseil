@@ -1,8 +1,10 @@
 class Estimation < ActiveRecord::Base
 	belongs_to :customer, required: true
+	belongs_to :guaranty, required: true
 	has_many :volets, dependent: :destroy
 	accepts_nested_attributes_for :volets, allow_destroy: true
 
+	scope :with_associations, -> (*){ eager_load(:customer, :guaranty, volets: {prestation_lines: {prestation: :tva}}) }
 	#
 	# validation
 	#

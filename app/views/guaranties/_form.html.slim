@@ -1,0 +1,11 @@
+= simple_form_for resource, wrapper: :min_inline_foundation do |f|
+	= f.error_notification	
+	.callout
+		.row
+			.small-12.medium-6.column
+				= f.input :libelle
+			.small-12.medium-6.column
+				h5= resource_class.human_attribute_name("description")
+				= quill_editor nil, { name: 'guaranty[description]', value: f.object.description }
+	= f.button :submit, class: 'small'
+	= link_to I18n.t(:index), collection_path, class: 'button small secondary'

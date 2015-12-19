@@ -36,10 +36,13 @@ module AjaxNestedForm
 				# helper_options[:fields_for_options][:builder] = (helper_options[:fields_for_options][:builder]||options[:builder]).to_s if helper_options[:fields_for_options][:builder]||options[:builder]
 				helper_options[:fields_for_options][:builder] ||= options[:builder].to_s if helper_options[:fields_for_options][:builder]||options[:builder]
 				
-				# si has_one association, on positionne la limit a 1
-				helper_options[:limit] = 1 if object.class.reflect_on_association(association).macro == :has_one
+				# si has_one association, on positionne la limit a 1 (si pas ActiveModel::Base)
+				if object.is_a?ActiveRecord::Base
+					helper_options[:limit] = 1 if object.class.reflect_on_association(association).macro == :has_one
+				end
 
-				helper_options[:data] = { object: object.class.name, id: object.id, association: association, record: object_name, options: helper_options[:fields_for_options] }
+				# on fait un try sur l'object car si ActiveModel::Base pas de id
+				helper_options[:data] = { object: object.class.name, id: object.try(:id) , association: association, record: object_name, options: helper_options[:fields_for_options] }
 				# 	partial: helper_options[:partial],
 				# 	path: helper_options[:path],
 				# 	options: helper_options[:fields_for_options],

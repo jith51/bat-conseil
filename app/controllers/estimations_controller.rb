@@ -1,6 +1,8 @@
 class EstimationsController < BaseController
+	has_scope :with_associations, default: nil, allow_blank: true, only: [:edit, :show, :generate_pdf]
+
 	respond_to :pdf, only: :generate_pdf
-	
+
 	def generate_pdf
 		respond_with *with_chain(resource) do |format|
 			format.pdf do
@@ -13,7 +15,7 @@ class EstimationsController < BaseController
 						left: "Left",
 						right: "Right"
 		     	},
-		     	margin: { top: 20, bottom: 15, left: 20, right: 20 },
+		     	margin: { top: 15, bottom: 15, left: 20, right: 20 },
 		     	show_as_html: params[:debug].present?,
 		     	save_to_file: Rails.root.join('public/pdf', "Devis_#{resource.id}.pdf")
 		  end

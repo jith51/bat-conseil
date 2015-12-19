@@ -1,6 +1,14 @@
 <%= fields_for record, @object do |f| %>
-	<% object_association = ( (f.object.class.reflect_on_association(association).macro == :has_many) ? f.object.send(association).build : f.object.send("build_#{association.to_s}".to_sym) ) %>
-	<%= f.fields_for association, object_association, options do |f| %>
-		<%= render partial, f: f %>
- 	<% end%>
+	<% if @object.is_a?ActiveRecord::Base %>
+		<% object_association = ( (f.object.class.reflect_on_association(association).macro == :has_many) ? f.object.send(association).build : f.object.send("build_#{association.to_s}".to_sym) ) %>
+		<%= f.fields_for association, object_association, options do |f| %>
+			<%= render partial, f: f %>
+	 	<% end%>
+	<% else %>
+		<!-- cas d'un ActiveModel::Base -->
+		<% object_association = association.classify.constantize.new %>
+		<%= f.fields_for association, object_association, options.merge(index: options[:child_index]) do |f| %>
+			<%= render partial, f: f %>
+	 	<% end%>
+	<% end %>
 <% end %>

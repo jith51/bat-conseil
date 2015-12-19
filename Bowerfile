@@ -3,8 +3,9 @@
 
 asset 'jquery'
 asset 'jquery-ujs'
-asset 'foundation-sites'
+asset 'foundation-sites', "6.0.5"
 asset 'foundation-icon-fonts'
+asset 'motion-ui'
 asset 'DataTables'
 asset 'datatables-responsive'
 asset 'quill'

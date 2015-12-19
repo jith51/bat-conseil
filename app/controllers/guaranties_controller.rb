@@ -1,0 +1,3 @@
+class GuarantiesController < BaseController
+
+end

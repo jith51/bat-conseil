@@ -13,7 +13,7 @@ class CustomersDatatable < AjaxDatatablesRails::Base
       responsive: true,
       serverSide: false,
       ajax: nil,
-      dom: "<'row'<'columns'<'float-left'f>><'toolbar columns'>r>"+"t"+"<'row'<'columns'i><'columns'p>>",
+      dom: "<'dt-toolbar-grid'<'column'<'float-left'f>><'toolbar column'>r>"+"t"+"<'row'<'columns'i><'columns'p>>",
       oLanguage: { "sSearch": '<i class="fi-magnifying-glass hide-for-small-only"></i>' },
       scrollCollapse: true,
       pagingType: "numbers",
